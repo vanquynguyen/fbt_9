@@ -14,16 +14,15 @@
                         </div>
                     @endif
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('password.request') }}">
-                        {{ csrf_field() }}
+                    {!! Form::open(['route' => 'password.request', 'method' => 'post', 'role' => 'form', 'class' => 'form-horizontal'])!!}
 
-                        <input type="hidden" name="token" value="{{ $token }}">
+                        {!! Form::hidden('token', $token) !!}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">{{ trans('messages.email') }}</label>
+                            {!! Form::label('email', trans('messages.email'), ['class' => 'col-md-4 control-label']) !!}
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}" required autofocus>
+                                {!! Form::email('email', old('email'), ['id' => 'email', class' => 'form-control', 'required' => 'required']) !!}
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -34,10 +33,10 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">{{ trans('messages.password') }}</label>
+                            {!! Form::label('password', trans('messages.password'), ['class' => 'col-md-4 control-label']) !!}
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                {!! Form::password('password', ['class' => 'form-control', 'required' => 'required']) !!}
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -48,9 +47,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">{{ trans('messages.confirm_password') }}</label>
+                            {!! Form::label('password-confirm', trans('messages.confirm_password'), ['class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                {!! Form::password('password_confirmation', ['class' => 'form-control', 'required' => 'required', 'id' => 'password-confirm']) !!}
 
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
@@ -62,12 +61,10 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ trans('messages.reset_password') }}
-                                </button>
+                                {!! Form::submit(trans('messages.reset_password'), ['class' => 'btn btn-primary']) !!}
                             </div>
                         </div>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

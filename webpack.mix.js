@@ -12,9 +12,15 @@ const { mix } = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css')
-   .copy('node_modules/sweetalert/dist/sweetalert.css', 'resources/assets/sass/sweetalert.scss')
-   .sass('resources/assets/sass/sweetalert.scss', 'public/css')
-   .js([
+    .js([
         'node_modules/sweetalert/dist/sweetalert.min.js'
-    ], 'public/js/app.js');
+    ], 'public/js/app.js')
+    .js('resources/assets/js/jquery.js', 'public/js')
+    .sass('resources/assets/sass/app.scss', 'public/css')
+    .sass('resources/assets/sass/sweetalert.scss', 'public/css')
+    .copy('node_modules/sweetalert/dist/sweetalert.css', 'resources/assets/sass/sweetalert.scss')
+    .styles('resources/assets/css/style.css', 'public/css/style.css')
+    .styles('resources/assets/css/reset.css', 'public/css/reset.css')
+    .styles('resources/assets/css/grid.css', 'public/css/grid.css')
+    .styles('resources/assets/css/superfish.css', 'public/css/superfish.css')
+    .styles('resources/assets/css/admin.css', 'public/css/admin.css');
