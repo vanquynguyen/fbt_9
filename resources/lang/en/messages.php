@@ -1,4 +1,5 @@
 <?php
+
 return [
     'loged_in' => 'You are logged in!',
     'email' => 'E-Mail Address',
@@ -8,8 +9,20 @@ return [
     'forgot_password' => 'Forgot Your Password?',
     'register' => 'Register',
     'name' => 'Name',
+    'address' => 'Address',
+    'phone' => 'Phone',
+    'gender' => 'Gender',
+    'level' => 'Level',
+    'male' => 'Male',
+    'female' => 'Female',
     'confirm_password' => 'Confirm Password',
     'reset_password' => 'Reset Password',
     'password_reset_link' => 'Send Password Reset Link',
     'logout' => 'Logout',
+    'home' => 'Home',
+    'about' => 'About',
+    'gallery' => 'Gallery',
+    'tour' => 'Tour',
+    'blog' => 'Blog',
+    'admin' => 'Admin',
 ];
