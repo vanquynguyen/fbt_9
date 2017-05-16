@@ -12,9 +12,30 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('sides.home');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->middleware('auth');
+
+Route::get('/about', function () {
+    return view('sides.about');
+})->name('about');
+
+Route::get('/gallery', function () {
+    return view('sides.gallery');
+})->name('gallery');
+
+Route::get('/tours', function () {
+    return view('sides.tours');
+})->name('tours');
+
+Route::get('/blog', function () {
+    return view('sides.blog');
+})->name('blog');
+
+
+Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::get('/', 'HomeController@index')->name('admin.home');
+});

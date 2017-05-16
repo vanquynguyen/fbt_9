@@ -67,4 +67,22 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(User::Class, 'follows', 'user_id', 'follower_id');
     }
+
+    /*
+     * Check Admin
+     */
+    public function isAdmin()
+    {
+        return $this->level == 1;
+    }
+
+    public function getAvatarAttribute($value)
+    {
+        return asset(config('custom.pathAvatar') . $value);
+    }
+    
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
 }
