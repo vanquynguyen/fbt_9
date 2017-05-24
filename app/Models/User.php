@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Search;
 
 class User extends Authenticatable
 {
@@ -78,11 +79,17 @@ class User extends Authenticatable
 
     public function getAvatarAttribute($value)
     {
-        return asset(config('custom.pathAvatar') . $value);
+        return asset(config('custom.defaultPath') . $value);
     }
     
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function scopeSearch($query, $keyword)
+    {
+        $keyword = Search::search($keyword);
+        return $query->where('name', 'like', "%$keyword%");
     }
 }

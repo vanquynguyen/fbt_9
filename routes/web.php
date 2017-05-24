@@ -38,4 +38,6 @@ Route::get('/blog', function () {
 
 Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', 'HomeController@index')->name('admin.home');
+    //Manage Users
+    Route::resource('user', 'UserController');
 });

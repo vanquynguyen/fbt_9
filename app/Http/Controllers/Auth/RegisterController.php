@@ -70,7 +70,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'phone' => $data['phone'],
             'gender' => $data['gender'],
-            'level' => config('custom.level'),
+            'level' => config('custom.user'),
         ]);
     }
 }
