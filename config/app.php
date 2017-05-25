@@ -176,6 +176,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\FacadesServiceProvider::class,
 
     ],
 
@@ -227,7 +228,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-
+        'UploadFile' => App\Facade\CustomFacade\UploadFile::class,
+        'Search' => App\Facade\CustomFacade\Search::class,
     ],
 
 ];

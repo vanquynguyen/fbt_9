@@ -76,7 +76,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                @yield('sidebar')
+                @include('layouts.sidebar_admin')
                 @yield('content')
             </div>
 
