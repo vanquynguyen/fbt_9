@@ -40,4 +40,6 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
     Route::get('/', 'HomeController@index')->name('admin.home');
     //Manage Users
     Route::resource('user', 'UserController');
+    //Manage Categories
+    Route::resource('category', 'CategoryController');
 });
