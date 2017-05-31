@@ -42,4 +42,9 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
     Route::resource('user', 'UserController');
     //Manage Categories
     Route::resource('category', 'CategoryController');
+    //Manage Tours
+    Route::resource('tour', 'TourController');
+    Route::resource('itinerary', 'ItineraryController');
+    Route::get('tour/{id}/itinerary/create', 'ItineraryController@createItineraryTour')->name('itinerary.createTour');
+    Route::get('tour/{id}/itineraries', 'ItineraryController@itinerariesTour')->name('itineraries.tour');
 });

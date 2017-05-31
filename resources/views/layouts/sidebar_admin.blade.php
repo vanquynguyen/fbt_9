@@ -2,6 +2,7 @@
     <ul class="nav">
         <li ><a href="{{ route('user.index') }}">Manage Users </a></li>
         <li ><a href="{{ route('category.index') }}">Manage Categories</a></li>
+        <li><a href="{{ route('tour.index') }}">Manage Tours</a></li>
     </ul>
 
 </div>

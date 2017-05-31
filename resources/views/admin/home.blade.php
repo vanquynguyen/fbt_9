@@ -1,5 +1,4 @@
 @extends('layouts.admin')
-@extends('layouts.sidebar_admin')
 
 @section('content')
     <div class="col-sm-8 col-md-9 content_admin">
