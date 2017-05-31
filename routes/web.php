@@ -34,7 +34,15 @@ Route::get('/tours', function () {
 Route::get('/blog', function () {
     return view('sides.blog');
 })->name('blog');
+//Tour
+Route::get('tours', 'TourController@index')->name('tours');
+Route::get('tour/{id}/detail', 'TourController@show')->name('tour.detail');
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('tour/{id}/booking', 'BookingController@index')->name('booking.index');
+    Route::post('tour/{id}/booking/payment', 'BookingController@store')->name('booking.payment');
+    Route::get('calculate', 'BookingController@calculate')->name('booking.calculate');
+});
 
 Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', 'HomeController@index')->name('admin.home');

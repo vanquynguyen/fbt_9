@@ -63,4 +63,20 @@ class Tour extends Model
         $keyword = Search::search($keyword);
         return $query->where('name', 'like', "%$keyword%");
     }
+
+    public function calculateBooking($quantity = null)
+    {
+        $supplement = $quantity - $this->min_quantity;
+
+        if ($supplement > 0) {
+            $totalAmount = ($this->price - ($this->promotion / 100)) + $supplement*$this->single_supplement; 
+        } else {
+            $totalAmount = ($this->price - ($this->promotion / 100));
+        }
+
+        $this->paymentSurcharge = $totalAmount / 10;
+        $this->totalAmount = $totalAmount + $this->paymentSurcharge;
+
+        return $this;
+    }
 }

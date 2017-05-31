@@ -11,4 +11,6 @@ return [
     'defaultImage' => 'default_img.jpg',
     'stripe' => 1,
     'direct_payment' => 0,
+    'paid' => 1,
+    'unpaid' => 0,
 ];

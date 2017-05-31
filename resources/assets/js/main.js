@@ -57,4 +57,31 @@ $(document).ready(function () {
             $('.search_result').html('');
         }
     });
+
+    //calculate book's tour
+    $(document).on('change', '.adult', function () {
+        quantity = $(this).val();
+        id = $(this).data('id');
+        $.ajax({
+            type : "GET",
+            url : '/calculate',
+            async : true,
+            data : {'quantity': quantity, 'id': id} ,
+            success : function (data) {
+                $('.payment_surcharge').html(data.paymentSurcharge);
+                $('.total_amount').html(data.totalAmount);
+                $('.amount').val(data.totalAmount);
+            },
+        });
+    });
+
+    //payment method
+    $('#payment').hide();
+    $(document).on('click', '.method', function () {
+        if ($(this).val() == 1) {
+            $("#payment").show();
+        } else {
+            $("#payment").hide();
+        }
+    });
 });

@@ -27,6 +27,8 @@ class Booking extends Model
         'infant',
         'total_amount',
         'orther_request',
+        'status',
+        'method_payment',
     ];
 
     /**

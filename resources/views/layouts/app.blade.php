@@ -15,6 +15,7 @@
     {!! Html::style('css/style.css') !!}
     <!-- Scripts -->
     {!! Html::script('js/jquery.js') !!}
+    {!! Html::script('js/main.js')!!}
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
@@ -26,19 +27,19 @@
         <header>
             <div class="container_12">
                 <div class="grid_12">
-                  <h1><a href="index.html"><img src="images/logo.png" alt=""></a></h1>
+                  <h1><a href="#"><img src="{{ asset('images/logo.png') }}" alt=""></a></h1>
                   <div class="clear"></div>
                 </div>
                 <div class="menu_block navigation">
                     <nav>
                         <ul class="sf-menu">
-                            <li><a href="/">{{trans('messages.home')}}</a></li>
-                            <li><a href="{{ route('about') }}">{{trans('messages.about')}}</a></li>
-                            <li><a href="{{ route('gallery') }}">{{trans('messages.gallery')}}</a></li>
-                            <li><a href="{{ route('tours') }}">{{trans('messages.tour')}}</a></li>
-                            <li><a href="{{ route('blog') }}">{{trans('messages.blog')}}</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="{{ route('about') }}">About</a></li>
+                            <li><a href="{{ route('gallery') }}">Gallery</a></li>
+                            <li><a href="{{ route('tours') }}">Tours</a></li>
+                            <li><a href="#">Blog</a></li>
                             @if (Auth::guest())
-                                <li><a href="{{ route('login') }}">{{trans('messages.login')}}</a></li>
+                                <li><a href="{{ route('login') }}">Login</a></li>
                             @else
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -48,13 +49,19 @@
                                     <ul class="dropdown-menu" role="menu">
                                         @can('access-admin')
                                         <li>
-                                            <a href="{{ route('admin.home') }}">{{trans('messages.admin')}}</a>
-                                            </li>
+                                            <a href="{{ route('admin.home') }}" class="text-left">Admin</a>
+                                        </li>
                                         @endcan
                                         <li>
-                                            <a href="{{ route('logout') }}"
+                                            <a href="#" class="text-left">Profile</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="text-left">Create Post</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('logout') }}" class="text-left"
                                                     onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">{{trans('messages.logout')}}
+                                                             document.getElementById('logout-form').submit();">Logout
                                             </a>
                                             {!! Form::open(['route' => 'logout', 'method' => 'post', 'id' => 'logout-form']) !!}
                                             {!! Form::close() !!}
@@ -71,10 +78,14 @@
         </header>
         
         <div class="main">
-        @yield('content')
-        @yield('bottom_block')
+            <div class="content row">
+                <div class="container">
+                    @yield('content')
+                </div>
+            </div>
+            @include('layouts/bottom_block')
         </div>
-        @yield('footer')
+    @include('layouts/footer')    
     </div>
 
     <!-- Scripts -->

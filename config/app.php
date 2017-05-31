@@ -168,6 +168,7 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -230,6 +231,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'UploadFile' => App\Facade\CustomFacade\UploadFile::class,
         'Search' => App\Facade\CustomFacade\Search::class,
+        'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
     ],
 
 ];
