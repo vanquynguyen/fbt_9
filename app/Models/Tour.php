@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Search;
 
 class Tour extends Model
 {
@@ -50,5 +51,16 @@ class Tour extends Model
     public function category()
     {
         return $this->belongsTo(Category::Class);
+    }
+
+    public function getImageAttribute($value)
+    {
+        return asset(config('custom.defaultPath').$value);
+    }
+
+    public function scopeSearch($query, $keyword)
+    {
+        $keyword = Search::search($keyword);
+        return $query->where('name', 'like', "%$keyword%");
     }
 }
